@@ -6,95 +6,17 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import AuthLayout from "../components/auth/AuthLayout";
+import BottomBox from "../components/auth/BottomBox";
+import Button from "../components/auth/Button";
+import FormBox from "../components/auth/FormBox";
+import Input from "../components/auth/Input";
+import Separator from "../components/auth/Separator";
+import routes from "../routes";
+import PageTitle from "../components/PageTitle";
+import { useForm } from "react-hook-form";
+import FormError from "../components/auth/FormError";
 
-const Title = styled.h1`
-  color: ${(props) => props.theme.fontColor};
-`;
-
-const Container = styled.div`
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const WhiteBox = styled.div`
-  background-color: white;
-  border: 1px solid rgb(219, 219, 219);
-  width: 100%;
-`;
-
-const TopBox = styled(WhiteBox)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 35px 40px 25px 40px;
-  margin-bottom: 10px;
-  form {
-    margin-top: 35px;
-    width: 100%;
-    display: flex;
-    justify-items: center;
-    flex-direction: column;
-    align-items: center;
-    input {
-      width: 100%;
-      border-radius: 3px;
-      padding: 7px;
-      background-color: #fafafa;
-      border: 0.5px solid rgb(219, 219, 219);
-      margin-top: 5px;
-      box-sizing: border-box;
-      &::placeholder {
-        font-size: 12px;
-      }
-      &:last-child {
-        border: none;
-        margin-top: 12px;
-        background-color: #0095f6;
-        color: white;
-        text-align: center;
-        padding: 8px 0px;
-        font-weight: 600;
-      }
-    }
-  }
-`;
-
-const BottomBox = styled(WhiteBox)`
-  padding: 20px 0px;
-  text-align: center;
-  a {
-    font-weight: 600;
-    color: #0095f6;
-  }
-`;
-
-const Wrapper = styled.div`
-  max-width: 350px;
-  width: 100%;
-`;
-
-const Separator = styled.div`
-  margin: 20px 0px 30px 0px;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  div {
-    width: 100%;
-    height: 1px;
-    background-color: rgb(219, 219, 219);
-  }
-  span {
-    margin: 0px 10px;
-    font-weight: 600;
-    color: #8e8e8e;
-  }
-`;
 
 const FacebookLogin = styled.div`
   color: #385285;
@@ -105,34 +27,69 @@ const FacebookLogin = styled.div`
 `;
 
 function Login() {
-    return (
-      
-      <Container>
-          <Wrapper>
-            <TopBox>
-              <div>
-                <FontAwesomeIcon icon={faInstagram} size="3x" />
-              </div>
-              <form>
-                <input type="text" placeholder="Username" />
-                <input type="password" placeholder="Password" />
-                <input type="submit" value="Log in" />
-              </form>
-              <Separator>
-                <div></div>
-                <span>Or</span>
-                <div></div>
-              </Separator>
-              <FacebookLogin>
-                <FontAwesomeIcon icon={faFacebookSquare} />
-                <span>Log in with Facebook</span>
-              </FacebookLogin>
-            </TopBox>
-            <BottomBox>
-              <span>Don't have an account?</span> <a href="#">Sign up</a>
-            </BottomBox>
-        </Wrapper>
-      </Container>
-    );
-  }
-  export default Login;
+  
+  const { register, handleSubmit, formState: { errors, isValid }, setError} = useForm({mode: "onChange"});
+  const onSubmitValid = (data) => {
+    
+    if (data.password !== data.password1) {
+      setError(
+        "password1",
+        { message: "Password are not the same" },
+        { shouldFocus: true }
+      );
+    }
+
+  };
+  
+  return (
+    
+    <AuthLayout>
+
+        <PageTitle title1="Login" />
+        <FormBox>
+          <div>
+            <FontAwesomeIcon icon={faInstagram} size="3x" />
+          </div>
+          
+          <form onSubmit={handleSubmit(onSubmitValid)}>
+          <Input
+            ref={register({
+              required: "Username is required",
+              minLength: {
+                value: 5,
+                message: "Username should be longer than 5 chars.",
+              },
+            })}
+            name="username"
+            type="text"
+            placeholder="Username"
+          />
+          <FormError message={errors?.username?.message} />
+          <Input
+            ref={register({
+              required: "Password is required.",
+            })}
+            name="password"
+            type="password"
+            placeholder="Password"
+            />
+            <FormError message={errors?.password?.message} />
+            <Button type="submit" value="Log in" disabled={!isValid} />
+          </form>
+          <Separator />
+          <FacebookLogin>
+            <FontAwesomeIcon icon={faFacebookSquare} />
+            <span>Log in with Facebook</span>
+          </FacebookLogin>
+        </FormBox>
+        <BottomBox
+          cta="Don't have an account?"
+          linkText="Sign up"
+          link={routes.signUp}
+        />
+    </AuthLayout>
+  );
+}
+  
+
+export default Login;
