@@ -28,17 +28,9 @@ const FacebookLogin = styled.div`
 
 function Login() {
   
-  const { register, handleSubmit, formState: { errors, isValid }, setError} = useForm({mode: "onChange"});
+  const { register, handleSubmit, formState: { errors, isValid },} = useForm({mode: "onChange"});
   const onSubmitValid = (data) => {
-    
-    if (data.password !== data.password1) {
-      setError(
-        "password1",
-        { message: "Password are not the same" },
-        { shouldFocus: true }
-      );
-    }
-
+  
   };
   
   return (
@@ -53,29 +45,28 @@ function Login() {
           
           <form onSubmit={handleSubmit(onSubmitValid)}>
           <Input
-            ref={register({
+            {...register("username",{
               required: "Username is required",
               minLength: {
                 value: 5,
                 message: "Username should be longer than 5 chars.",
               },
             })}
-            name="username"
             type="text"
             placeholder="Username"
           />
           <FormError message={errors?.username?.message} />
           <Input
-            ref={register({
+            {...register("password",{
               required: "Password is required.",
             })}
-            name="password"
             type="password"
             placeholder="Password"
-            />
+          />
             <FormError message={errors?.password?.message} />
             <Button type="submit" value="Log in" disabled={!isValid} />
           </form>
+          
           <Separator />
           <FacebookLogin>
             <FontAwesomeIcon icon={faFacebookSquare} />
@@ -87,6 +78,7 @@ function Login() {
           linkText="Sign up"
           link={routes.signUp}
         />
+    
     </AuthLayout>
   );
 }
