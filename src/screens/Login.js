@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import AuthLayout from "../components/auth/AuthLayout";
 import BottomBox from "../components/auth/BottomBox";
 import Button from "../components/auth/Button";
@@ -41,6 +42,17 @@ const SImg = styled.img`
     width: 96px;
     height: 24px;
 `;
+
+const StyledLink = styled(Link)`
+    positon:fixed;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #A9A9A9;
+    margin-left:270px;
+    margin-top:5px;
+`;
+
 
 
 function Login() {
@@ -86,6 +98,7 @@ function Login() {
                         hasError={Boolean(errors?.password?.message)}
                     />
                     <FormError message={errors?.password?.message} />
+                    <StyledLink to={routes.find}>비밀번호찾기</StyledLink>
                     <Button type="submit" value="로그인" disabled={!isValid} />
                     </form>
                 </FormBox>
