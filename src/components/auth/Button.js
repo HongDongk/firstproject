@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 const Button = styled.input`
-  border: none;
-  border-radius: 3px;
-  margin-top: 12px;
-  background-color: ${(props) => props.theme.accent};
-  color: white;
+  margin-top: 56px;
+  width: 359px;
+  height: 45px;
+  background: ${(props) => props.theme.bgColor};
+  border-radius: 5px;
   text-align: center;
-  padding: 8px 0px;
-  font-weight: 600;
-  width: 100%;
+  color: white;
   opacity: ${(props) => (props.disabled ? "0.2" : "1")};
 `;
 
