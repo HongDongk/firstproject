@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { BaseBox } from "../shared";
 
-const Container = styled(BaseBox)`
+const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

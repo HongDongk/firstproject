@@ -1,15 +1,19 @@
-import PropTypes from "prop-types";
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { BaseBox } from "../shared";
 
-const SBottomBox = styled(BaseBox)`
-  padding: 20px 0px;
+
+const SBottomBox = styled.div`
+  margin-bottom:10px;
   text-align: center;
+  color:#A9A9A9;
+  font-weight: 400;
+  font-size: 12px;
   a {
-    font-weight: 600;
-    margin-left: 5px;
-    color: ${(props) => props.theme.accent};
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 9px;
+    color: ${(props) => props.theme.bgColor};
   }
 `;
 
@@ -22,10 +26,5 @@ function BottomBox({ cta, link, linkText }) {
   );
 }
 
-BottomBox.propTypes = {
-  cta: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  linkText: PropTypes.string.isRequired,
-};
 
 export default BottomBox;

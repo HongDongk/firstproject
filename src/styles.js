@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
     body {
       background-color: #FAFAFA;
       font-size:14px;
-      font-family:'Open Sans', sans-serif;
+      font-family: 'Noto Sans KR', sans-serif;
       color:rgb(38, 38, 38);
     }
   

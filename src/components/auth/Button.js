@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.input`
-  margin-top: 56px;
+  margin-top: 28px;
   width: 359px;
   height: 45px;
   background: ${(props) => props.theme.bgColor};

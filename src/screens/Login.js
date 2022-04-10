@@ -1,8 +1,7 @@
-import Header from "../components/Header";
+import PageTitle from "../components/PageTitle";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import AuthLayout from "../components/auth/AuthLayout";
 import BottomBox from "../components/auth/BottomBox";
 import Button from "../components/auth/Button";
 import FormBox from "../components/auth/FormBox";
@@ -10,6 +9,9 @@ import FormError from "../components/auth/FormError";
 import Input from "../components/auth/Input";
 import routes from "../routes";
 import logo from '../img/Logo.png';
+import cat from '../img/cat1.png';
+import dog from '../img/dog1.png';
+
 
 const Container = styled.div`
     display: flex;
@@ -17,6 +19,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: -1;
 `;
 
 const Square = styled.div`
@@ -28,6 +31,7 @@ const Square = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top:50px;
 `;
 const Notice = styled.div`
     font-family: 'Noto Sans KR';
@@ -41,6 +45,33 @@ const Notice = styled.div`
 const SImg = styled.img`
     width: 96px;
     height: 24px;
+    position: relative;
+    bottom:55px;
+    
+`;
+const SImg2 = styled.img`
+    width: 70px;
+    height: 18px;
+    margin-top:64px;
+`;
+const Sdog = styled.img`
+    width: 280.46px;
+    height: 174.37px;
+    margin-right:50px;
+    margin-top:28px;
+`;
+const Scat = styled.img`
+    width: 218.26px;
+    height: 199.37px;
+    margin-left:50px;
+`;
+const Imagebox = styled.div`
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    bottom: 110px;
+    z-index: 1;
 `;
 
 const StyledLink = styled(Link)`
@@ -63,8 +94,8 @@ function Login() {
     };
     return (
         <Container>
-            <SImg src={logo} className='Logo' alt='Logo' />
-
+            <PageTitle title1="Login" />
+            <SImg src={logo} alt='Logo' />
             <Square>
                 <FormBox>
                     
@@ -72,7 +103,7 @@ function Login() {
                     <form onSubmit={handleSubmit(onSubmitValid)}>
                     <Input
                         {...register("email", {
-                        required: "Email is required.",
+                        required: "이메일을 입력해주세요",
                         pattern: {
                             value: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
                             message: "올바른이메일형식이 아닙니다",
@@ -86,10 +117,10 @@ function Login() {
                     <FormError message={errors?.email?.message} />
                     <Input
                         {...register("password", {
-                        required: "Password is required.",
+                        required: "비밀번호를 입력해주세요",
                         minLength: {
                             value: 8,
-                            message: "Your password is too short.",
+                            message: "비밀번호는8자리이상이여야합니다",
                             },
                         })}
                         name="password"
@@ -105,11 +136,15 @@ function Login() {
                 <BottomBox
                 cta="아직 회원이 아니신가요?"
                 linkText="회원가입하러 가기"
-                link={routes.signUp}/>
+                link={routes.signup}/>
+                <SImg2 src={logo} alt='Logo' />
             </Square>
-
+            <Imagebox>
+                <Sdog src={dog}  alt='dog' />
+                <Scat src={cat}  alt='cat' />            
+            </Imagebox>
         </Container>
-
+            
     
     );
   }

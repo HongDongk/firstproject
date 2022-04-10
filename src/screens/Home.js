@@ -16,7 +16,7 @@ function Home() {
       <Container>
         
           <Header/>
-          <Link to={routes.login} style={{ textDecoration: 'none' }}>로그인페이지로</Link>
+          <Link to={routes.login}>로그인페이지로</Link>
       
       </Container>
     );

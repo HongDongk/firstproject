@@ -4,6 +4,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "styled-components";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import Signup from "./screens/Signup";
 import Find from "./screens/Find";
 import routes from "./routes";
 
@@ -24,6 +25,9 @@ function App() {
                 </Route>
                 <Route path={routes.login}>
                    <Login />
+                </Route>
+                <Route path={routes.signup}>
+                   <Signup />
                 </Route>
                 <Route path={routes.find}>
                    <Find />
