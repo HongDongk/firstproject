@@ -5,12 +5,12 @@ const Container = styled.div`
   
   
   form {
-    padding-left:30px;
+    margin-top:50px;
     height:550px;
     display: flex;
     flex-direction: column;
     justify-content: space-around; 
-    border: 4px dotted green;
+    
   }
 `;
 

@@ -33,29 +33,23 @@ const Square = styled.div`
 `;
 const Sinfo = styled.div`
     font-weight: 700;
-    font-size: 14px; 
-       
+    font-size: 14px;  
+    line-height: 15px;     
 `;
 
-const SInput = styled.input`
+const SInput = styled(Input)`
     width: 161px;
     height: 40px;
-    background: #FFFFFF;
-    border-radius: 3px;
-    padding: 14px;
-    background-color: #fafafa;
-    border: 0.3px solid
-        ${(props) => (props.hasError ? "tomato" : props.theme.borderColor)};
-    margin-top: 5px;
-    box-sizing: border-box;
-    &::placeholder {
-        font-size: 12px;
-    }
-    &:focus {
-        border-color: rgb(38, 38, 38);
-    }
+`;
+const SInput2 = styled(Input)`
+    width: 410px;
+    height: 40px;  
 `;
 
+const SButton= styled(Button)`
+    width: 410px;
+    height: 45px;
+`;
 const SImg = styled.img`
     width: 274px;
     height: 71px;
@@ -65,8 +59,18 @@ const SImg = styled.img`
 const Scat = styled.img`
     width: 340.35px;
     height: 215.5px;
+    z-index: 1;
+    position: relative;
+    right:400px;
+    bottom:30px;
 `;
+const Box = styled.div`
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
 
+
+`;
 
 function Signup() {
 
@@ -89,7 +93,7 @@ function Signup() {
                 <FormBox2>
                     <form onSubmit={handleSubmit(onSubmitValid)}>
                     <Sinfo>이메일</Sinfo>
-                    <Input
+                    <SInput2
                         {...register("email", {
                         required: "이메일을 입력해주세요",
                         pattern: {
@@ -103,7 +107,7 @@ function Signup() {
                     />
                     <FormError message={errors?.email?.message} />
                     <Sinfo>비밀번호</Sinfo>
-                    <Input
+                    <SInput2
                         {...register("password", {
                             required: "비밀번호를 입력해주세요",
                             minLength: {
@@ -117,7 +121,7 @@ function Signup() {
                     />
                     <FormError message={errors?.password?.message} />
                     <Sinfo>비밀번호재확인</Sinfo>
-                    <Input
+                    <SInput2
                         {...register("password1", {
                             required: "비밀번호를 재입력해주세요",
                             minLength: {
@@ -130,7 +134,7 @@ function Signup() {
                         hasError={Boolean(errors?.password1?.message)}
                     />
                     <FormError message={errors?.password1?.message} />
-
+                    <Box>
                     <Sinfo>성</Sinfo>
                     <SInput
                         {...register("gender", {
@@ -151,8 +155,8 @@ function Signup() {
                         hasError={Boolean(errors?.name?.message)}
                     />
                     <FormError message={errors?.name?.message} />
-                    
-                    <Button type="submit" value="반려동물 정보 입력하러가기" disabled={!isValid }/> 
+                    </Box>
+                    <SButton type="submit" value="반려동물 정보 입력하러가기" disabled={!isValid }/> 
                     </form>
                 </FormBox2>
                     

@@ -5,6 +5,7 @@ import { ThemeProvider } from "styled-components";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
+import PetSignup from "./screens/PetSignup";
 import Find from "./screens/Find";
 import routes from "./routes";
 
@@ -28,6 +29,9 @@ function App() {
                 </Route>
                 <Route path={routes.signup}>
                    <Signup />
+                </Route>
+                <Route path={routes.Petsignup}>
+                   <PetSignup />
                 </Route>
                 <Route path={routes.find}>
                    <Find />
