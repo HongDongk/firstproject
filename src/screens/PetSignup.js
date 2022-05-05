@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import FormError from "../components/auth/FormError";
 import Input from "../components/auth/Input";
 import Button from "../components/auth/Button";
-import FormBox2 from "../components/auth/FormBox2";
+import FormBox3 from "../components/auth/FormBox3";
 import routes from "../routes";
 import logo from '../img/Logo.png';
 import dog from '../img/dog2.png';
-
+import {useState} from 'react'
 
 const Container = styled.div`
     display: flex;
@@ -38,13 +38,22 @@ const Sinfo = styled.div`
 `;
 
 const SInput = styled(Input)`
-    width: 161px;
-    height: 40px;
-`;
-const SInput2 = styled(Input)`
     width: 410px;
     height: 40px;  
 `;
+
+const SInput2 = styled.input`
+   
+ `;
+
+ const Sdiv = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-between; 
+    width:250px;
+ `;
+ 
 
 const SButton= styled(Button)`
     width: 410px;
@@ -73,31 +82,40 @@ const Box = styled.div`
 
 `;
 
+
+
 function PetSignup() {
 
     const { register, handleSubmit, formState: { errors, isValid }, control} = useForm({mode: "onChange",});
     
     const selectOptions = [
-        { value: "student", label: "Student" },
-        { value: "developer", label: "Developer" },
-        { value: "manager", label: "Manager" }
+        { value: "강아지", label: "강아지" },
+        { value: "고양이", label: "고양이" },
+        { value: "햄스터", label: "햄스터" },
+        { value: "토끼", label: "토끼" },
+        { value: "고슴도치", label: "고슴도치" },
+        { value: "거북이", label: "거북이" },
+        { value: "기니피그", label: "기니피그" },
+        { value: "조류", label: "조류" },
+        { value: "패릿", label: "패릿" }  
       ];
-    const registerOptions = {
-        
-        role: { required: "Role is required" }
-    };
-      const onSubmitValid = (data) => {
+    
+    const onSubmitValid = (data) => {
         
     };
+    
+    
     return (
-        <Container>
+        
+        <Container>           
             <PageTitle title1="PetSignUp" />
             <SImg src={logo} alt='Logo' />
+                
                 <Square>
-                <FormBox2>
+                <FormBox3>
                     <form onSubmit={handleSubmit(onSubmitValid)}>
                     <Sinfo>반려동물이름</Sinfo>
-                    <SInput2
+                    <SInput
                         {...register("petname", {
                         required: "반려동물의 이름을 입력해주세요",
                             },
@@ -109,19 +127,57 @@ function PetSignup() {
                     <FormError message={errors?.petname?.message} />
                     <Sinfo>어떤 동물인가요?</Sinfo>
                     <Controller
-                        name="role"
+                        {...register("petkinds", {
+                            required: "반려동물의 종류를입력해주세요",
+                                },
+                        )}
+                        name="petkinds"
                         control={control}
                         defaultValue=""
-                        rules={registerOptions.role}
                         render={({ field }) => (
-                            <Select options={selectOptions} {...field} label="Text field" />
+                            <Select options={selectOptions} {...field}  label="Text field" />
                         )}
                     />
 
-                  
-                    <SButton type="submit" value="반려동물 정보 입력하러가기" disabled={!isValid }/> 
+           
+                    <Sinfo>품종은 무엇인가요?</Sinfo>
+                    <SInput
+                        {...register("petvarious", {
+                        required: "반려동물의 품종을 입력해주세요",
+                            },
+                        )}
+                        name="petvarious"
+                        type="text"
+                        hasError={Boolean(errors?.petvarious?.message)}
+                    />
+                    <FormError message={errors?.petvarious?.message} />
+                    
+                    <Sinfo>몇살 인가요?</Sinfo>
+                    <SInput
+                        {...register("petkage", {
+                        required: "반려동물의 나이를 입력해주세요",
+                            },
+                        )}
+                        name="petkage"
+                        type="text"
+                        hasError={Boolean(errors?.petage?.message)}
+                    />
+                    <FormError message={errors?.petage?.message} />
+                    
+                    <Sinfo>성별이 무엇인가요?</Sinfo>
+                    <Sdiv>
+                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="male" />남자</label>
+                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="female" />여자</label>
+                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="none" />모르겠어요</label>    
+                    </Sdiv>
+                            
+                    
+                    <Sinfo>반려동물의 사진을 입력해주세요(선택)</Sinfo>
+                    <SInput2 name="petimg" type="file"/>
+                    
+                    <SButton type="submit" value="등록하고 완료하기" disabled={!isValid }/> 
                     </form>
-                </FormBox2>
+                </FormBox3>
                     
                 </Square>
             

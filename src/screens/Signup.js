@@ -37,6 +37,10 @@ const Sinfo = styled.div`
     line-height: 15px;     
 `;
 
+const Sinfo2 = styled(Sinfo)`
+    margin-top:17px;
+`;
+
 const SInput = styled(Input)`
     width: 161px;
     height: 40px;
@@ -84,6 +88,8 @@ function Signup() {
               { shouldFocus: true }
             );
         }
+        <link to={routes.Petsignup}></link>
+
     };
     return (
         <Container>
@@ -135,7 +141,7 @@ function Signup() {
                     />
                     <FormError message={errors?.password1?.message} />
                     <Box>
-                    <Sinfo>성</Sinfo>
+                    <Sinfo2>성</Sinfo2>
                     <SInput
                         {...register("gender", {
                         required: "성을 입력해주세요",
@@ -145,7 +151,7 @@ function Signup() {
                         hasError={Boolean(errors?.gender?.message)}
                     />
                     <FormError message={errors?.gender?.message} />
-                    <Sinfo>이름</Sinfo>
+                    <Sinfo2>이름</Sinfo2>
                     <SInput
                         {...register("name", {
                         required: "이름을 입력해주세요",

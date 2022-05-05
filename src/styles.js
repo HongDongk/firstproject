@@ -11,9 +11,6 @@ export const GlobalStyles = createGlobalStyle`
     
     ${reset}  
     
-    input {
-      all:unset;
-    }
     
     * {
       box-sizing:border-box;
