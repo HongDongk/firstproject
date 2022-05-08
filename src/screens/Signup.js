@@ -7,7 +7,7 @@ import Input from "../components/auth/Input";
 import Button from "../components/auth/Button";
 import FormBox2 from "../components/auth/FormBox2";
 import routes from "../routes";
-import logo from '../img/Logo.png';
+import logo from '../img/logobig.png';
 import cat from '../img/cat2.png';
 
 
@@ -38,16 +38,25 @@ const Sinfo = styled.div`
 `;
 
 const Sinfo2 = styled(Sinfo)`
-    margin-top:17px;
+    position: relative;
+    bottom:20px;
+    left:8px;
+    
 `;
 
 const SInput = styled(Input)`
+    position: relative;
+    right:12px;
     width: 161px;
     height: 40px;
 `;
 const SInput2 = styled(Input)`
     width: 410px;
     height: 40px;  
+`;
+
+const SInput3 = styled(SInput)`
+    width: 225px;
 `;
 
 const SButton= styled(Button)`
@@ -70,10 +79,7 @@ const Scat = styled.img`
 `;
 const Box = styled.div`
     display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-
-
+    
 `;
 
 function Signup() {
@@ -150,9 +156,8 @@ function Signup() {
                         type="text"
                         hasError={Boolean(errors?.gender?.message)}
                     />
-                    <FormError message={errors?.gender?.message} />
                     <Sinfo2>이름</Sinfo2>
-                    <SInput
+                    <SInput3
                         {...register("name", {
                         required: "이름을 입력해주세요",
                         })}
@@ -160,7 +165,6 @@ function Signup() {
                         type="text"
                         hasError={Boolean(errors?.name?.message)}
                     />
-                    <FormError message={errors?.name?.message} />
                     </Box>
                     <SButton type="submit" value="반려동물 정보 입력하러가기" disabled={!isValid }/> 
                     </form>

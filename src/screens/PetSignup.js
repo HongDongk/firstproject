@@ -8,7 +8,7 @@ import Input from "../components/auth/Input";
 import Button from "../components/auth/Button";
 import FormBox3 from "../components/auth/FormBox3";
 import routes from "../routes";
-import logo from '../img/Logo.png';
+import logo from '../img/logobig.png';
 import dog from '../img/dog2.png';
 import {useState} from 'react'
 

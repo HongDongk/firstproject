@@ -6,6 +6,7 @@ import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import PetSignup from "./screens/PetSignup";
+import Signupok from "./screens/Signupok";
 import Find from "./screens/Find";
 import routes from "./routes";
 
@@ -33,6 +34,10 @@ function App() {
                 <Route path={routes.Petsignup}>
                    <PetSignup />
                 </Route>
+                <Route path={routes.signupok}>
+                   <Signupok />
+                </Route>
+
                 <Route path={routes.find}>
                    <Find />
                 </Route>
