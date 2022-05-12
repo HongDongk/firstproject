@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import routes from "../routes";
@@ -73,19 +73,35 @@ const Sleftp = styled.p`
     line-height: 20px;
     color: #C7C7C7;
 `;
+const Menu = styled.button`
+   
+    border:none;
+    background-color: Transparent;
+`;
+
 const Button = styled.button`
     width: 15px;
     height: 15px;
-    background: #A9A9A9;
     border-radius: 50%;
     border:none;
+`;
+const SButton = styled.button`
+    margin-top:90vh;
+    width: 151px;
+    height: 36px;
+    background: #EF5252;
+    border-radius: 3px;  
+    border:none;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 25px;
 `;
 const Sinfo = styled.div`
     position:absolute;
     left:30px;
     top:70px;
-    width: 395px;
-    
+    width: 395px;    
 `;
 const Sp = styled.p`
     font-weight: 700;
@@ -106,15 +122,36 @@ const Sp3 = styled.p`
     font-size: 14px;
     line-height: 23px;
     color: #000000;
-    text-align: center;    
+    text-align: center;  
 `;
-
+const Sp4 = styled.p`
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 45px;
+    color: #EF5252;
+    text-align: center;
+`;
+const Sp5 = styled.p`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    text-align: center;
+    color: #494949;
+`;
 const Smiddle = styled.div`
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;   
 `;
+const Smiddle2 = styled(Smiddle)`
+    margin-top:73vh;
+`;
+const Smiddle3 = styled(Smiddle)`
+    margin-top:26px;
+`;
+
 const SImg = styled.img`
     width: 96px;
     height: 24px;      
@@ -132,31 +169,53 @@ const SImg3 = styled.img`
 const SImg4 = styled.img`
     width: 220px;
     height: 57px;
+    margin-top:90vh;
 `;
 const SImg5 = styled.img`
     width: 204px;
     height: 32px;
+    margin-top:80px;
 `;
+const Stextbox = styled.div`
+    margin-top:13.3px;
+`;
+
+
 
 
 
 
 function Home() {
 
+    
+    const goToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        };
+    
+    const [color, setColor] = useState("#A9A9A9");
+    
+    const Smbutton = styled(Button)`
+        background-color: ${color};
+    `;
+    const change = () => { color === "#A9A9A9" ? setColor("red") : setColor("#A9A9A9");};
 
+    
   return (
       <Container>
         <PageTitle title1="Home" />
         <Header>
-          <SImg2 src={menu} alt='Menu' />
+          <Menu><SImg2 src={menu} alt='Menu' /></Menu>
           <SImg src={logo} alt='Logo' />
           <StyledLink to={routes.login}>Login</StyledLink>
         </Header>
         <Sleft>
-            <Sleftbox><Button/><Sleftp>공유할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Button/><Sleftp>작성할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Button/><Sleftp>확인할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Button/><Sleftp>관리할 수 있어요</Sleftp></Sleftbox>
+            <Sleftbox><Smbutton onClick={change}/><Sleftp>공유할 수 있어요</Sleftp></Sleftbox>
+            <Sleftbox><Smbutton onClick={change}/><Sleftp>작성할 수 있어요</Sleftp></Sleftbox>
+            <Sleftbox><Smbutton onClick={change}/><Sleftp>확인할 수 있어요</Sleftp></Sleftbox>
+            <Sleftbox><Smbutton onClick={change}/><Sleftp>관리할 수 있어요</Sleftp></Sleftbox>
           </Sleft>
         <Mainbox>
           <Sinfo>
@@ -169,14 +228,26 @@ function Home() {
         <SImg4 src={logobig} alt='logo' />
         <Smiddle>
           <SImg5 src={petmory} alt='logo' />
-          <Sp3>Petmory는 반려동물을 뜻하는 Pet과 기억을 뜻하는 Memory의 합성어입니다.</Sp3> 
-          <Sp3>펫모리는 반려동물과 함께 살아가는 기억들을 소중히 여기고 간직하며,</Sp3>
-          <Sp3>투병일지 작성 서비스를 통해 투병 과정을 기억하고자 하는 의미를 담고 있습니다.</Sp3>
+          <Stextbox>
+            <Sp3>Petmory는 반려동물을 뜻하는 Pet과 기억을 뜻하는 Memory의 합성어입니다.</Sp3> 
+            <Sp3>펫모리는 반려동물과 함께 살아가는 기억들을 소중히 여기고 간직하며,</Sp3>
+            <Sp3>투병일지 작성 서비스를 통해 투병 과정을 기억하고자 하는 의미를 담고 있습니다.</Sp3>
+          </Stextbox>
         </Smiddle>
-  
-         
-      
+        <Smiddle2>
+            <Sp4>반려동물 투병일지 작성 서비스를 제공합니다.</Sp4> 
+            <Sp4>반려인들간의 정보 공유 플랫폼 형성을 위해 노력합니다.</Sp4>
+            <Smiddle3>
+                <Sp5>본 사이트는 반려인들이 아픈 반려동물과 함께 살아가며 겪은 경험과 정보를 한 곳에 묶어놓기 위해 만들어졌습니다.</Sp5> 
+                <Sp5>반려인들은 반려동물들을 위해 긴 시간 동안 인터넷 서칭을 하며 정보를 찾아보기도 하고,</Sp5> 
+                <Sp5>상황이 호전되길 원하면서 여러 의약품을 시도하거나 결과가 보장되지 않은 보조제를 사용해보기도 합니다.</Sp5>
+                <Sp5>이들을 위해 Petmory는 정리된 투병일지를 작성할 수 있는 서비스를 제공하며,</Sp5>   
+                <Sp5>이곳을 통해 남겨진 여러 투병 기록들로 반려인들이 서로 정보를 공유할 수 있도록 도와줍니다.</Sp5>
+            </Smiddle3>
+        </Smiddle2> 
+        <SButton onClick={goToTop}>Go to Top</SButton>
       </Container>
     );
   }
+  
   export default Home;

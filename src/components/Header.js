@@ -5,7 +5,6 @@ import logo from '../img/Logo.png';
 import bell from '../img/bell.png';
 
 
-
 const SHeader = styled.div`
     width:100vw;
     display: flex;
@@ -42,14 +41,18 @@ const StyledLink = styled(Link)`
     line-height: 20px;
     color: #FFFFFF;
 `;
+const StyledLink2 = styled(Link)`
+    
+`;
+
 
 function Header() {
     return (
       <SHeader>
-        <SImg src={logo} alt='Logo' />
+        <StyledLink2 to={routes.home}><SImg src={logo} alt='Logo' /></StyledLink2>
             <Rightbox>
                 <SImg2 src={bell} alt='Bell' />
-                <StyledLink to={routes.login}>마이페이지</StyledLink>
+                <StyledLink to={routes.mypage}>마이페이지</StyledLink>
             </Rightbox>
       </SHeader>
     );
