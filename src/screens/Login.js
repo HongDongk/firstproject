@@ -73,7 +73,6 @@ const Imagebox = styled.div`
     bottom: 110px;
     z-index: 1;
 `;
-
 const StyledLink = styled(Link)`
     positon:fixed;
     font-weight: 400;

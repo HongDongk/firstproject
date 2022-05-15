@@ -6,9 +6,15 @@ import PageTitle from "../components/PageTitle";
 import logo from '../img/Logo.png';
 import logobig from '../img/logobig.png';
 import menu from '../img/menu.png';
-import main1 from '../img/1.png';
 import background from '../img/home.png';
 import petmory from '../img/petmory.png';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import main1 from '../img/1.png';
+import main2 from '../img/2.png';
+
+
 
 
 const Container = styled.div`
@@ -40,9 +46,24 @@ const StyledLink = styled(Link)`
     line-height: 20px;
     color: #FFFFFF;
 `;
+const StyledLink2 = styled(Link)`
+    width: 130px;
+    height: 41px;
+    background: #EF5252;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FFFFFF;
+`;
+
+
 const Mainbox = styled.div`
     position: relative;
-    bottom:21vh;
+    bottom:25vh;
     left:6vw;
     width:50vw;
     display: flex;
@@ -73,13 +94,11 @@ const Sleftp = styled.p`
     line-height: 20px;
     color: #C7C7C7;
 `;
-const Menu = styled.button`
-   
+const SMenu = styled.button`
     border:none;
     background-color: Transparent;
 `;
-
-const Button = styled.button`
+const RButton = styled.button`
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -96,26 +115,6 @@ const SButton = styled.button`
     font-weight: 700;
     font-size: 16px;
     line-height: 25px;
-`;
-const Sinfo = styled.div`
-    position:absolute;
-    left:30px;
-    top:70px;
-    width: 395px;    
-`;
-const Sp = styled.p`
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 35px;
-    color: #EF5252; 
-`;
-const Sp2 = styled.p`
-    position:relative;
-    top:11px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 23px;
-    color: #000000;
 `;
 const Sp3 = styled.p`
     font-weight: 400;
@@ -160,12 +159,6 @@ const SImg2 = styled.img`
     width: 25px;
     height: 16.67px; 
 `;
-const SImg3 = styled.img`
-    width: 662.81px;
-    height: 367.04px;
-    position:relative;
-    left:4vw;
-`;
 const SImg4 = styled.img`
     width: 220px;
     height: 57px;
@@ -179,51 +172,110 @@ const SImg5 = styled.img`
 const Stextbox = styled.div`
     margin-top:13.3px;
 `;
-
-
-
+const Sinfo = styled.div`
+    position:absolute;
+    left:30px;
+    top:70px;
+    width: 395px;    
+`;
+const Sp = styled.p`
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    color: #EF5252; 
+`;
+const Sp2 = styled.p`
+    position:relative;
+    top:11px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    color: #000000;
+`;
+const SImg3 = styled.img`
+    width: 662.81px;
+    height: 367.04px;
+    margin-left:60px;
+`;
 
 
 
 function Home() {
 
-    
+    const [currentButton, setCurrentButton] = useState(0);
+
+    const Smbutton0 = styled(RButton)`
+        background-color: ${currentButton === 0 ? 'red' : '#A9A9A9'} };
+        SImg src: ${currentButton === 0 ? {main1} : {main1}} };
+    `;
+    const Smbutton1 = styled(RButton)`
+        background-color: ${currentButton === 1 ? 'red' : '#A9A9A9'} };
+        ${currentButton === 0 ? main1 : main2} };
+    `;
+    const Smbutton2 = styled(RButton)`
+        background-color: ${currentButton === 2 ? 'red' : '#A9A9A9'} };
+    `;
+    const Smbutton3 = styled(RButton)`
+        background-color: ${currentButton === 3 ? 'red' : '#A9A9A9'} };
+    `;
+
+    const change = (buttonIndex) => { setCurrentButton(buttonIndex);};
+  
     const goToTop = () => {
             window.scrollTo({
                 top: 0,
                 behavior: "smooth",
             });
         };
-    
-    const [color, setColor] = useState("#A9A9A9");
-    
-    const Smbutton = styled(Button)`
-        background-color: ${color};
-    `;
-    const change = () => { color === "#A9A9A9" ? setColor("red") : setColor("#A9A9A9");};
 
-    
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {setAnchorEl(event.currentTarget); };
+    const handleClose = () => {setAnchorEl(null);};
+
   return (
       <Container>
         <PageTitle title1="Home" />
         <Header>
-          <Menu><SImg2 src={menu} alt='Menu' /></Menu>
-          <SImg src={logo} alt='Logo' />
-          <StyledLink to={routes.login}>Login</StyledLink>
+            <SMenu>
+                    <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                    >
+                    <SImg2 src={menu} alt='Menu' />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.login}>사람들의 이야기</StyledLink2></MenuItem>
+                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.login}>나의 이야기</StyledLink2></MenuItem>
+                    </Menu>
+            </SMenu>
+            <SImg src={logo} alt='Logo' />
+            <StyledLink to={routes.login}>Login</StyledLink>
         </Header>
-        <Sleft>
-            <Sleftbox><Smbutton onClick={change}/><Sleftp>공유할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Smbutton onClick={change}/><Sleftp>작성할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Smbutton onClick={change}/><Sleftp>확인할 수 있어요</Sleftp></Sleftbox>
-            <Sleftbox><Smbutton onClick={change}/><Sleftp>관리할 수 있어요</Sleftp></Sleftbox>
-          </Sleft>
+            <Sleft>
+                <Sleftbox><Smbutton0 onClick={() => change(0)}/><Sleftp>공유할 수 있어요</Sleftp></Sleftbox>
+                <Sleftbox><Smbutton1 onClick={() => change(1)}/><Sleftp>작성할 수 있어요</Sleftp></Sleftbox>
+                <Sleftbox><Smbutton2 onClick={() => change(2)}/><Sleftp>확인할 수 있어요</Sleftp></Sleftbox>
+                <Sleftbox><Smbutton3 onClick={() => change(3)}/><Sleftp>관리할 수 있어요</Sleftp></Sleftbox>
+            </Sleft>
         <Mainbox>
-          <Sinfo>
-            <Sp>간편한 게시글 형식으로 반려인들끼리 다양한 정보를 공유할 수 있습니다.</Sp>
-            <Sp2>매일매일 반려인들이 적은 투병 일지가 업로드 됩니다.</Sp2>
-            <Sp2>이를 통해 반려인들은 서로서로 정보를 공유하고 대화할 수 있습니다.</Sp2>
-          </Sinfo>
-          <SImg3 src={main1} alt='Main' />.
+            <Sinfo>
+                <Sp>간편한 게시글 형식으로 반려인들끼리 다양한 정보를 공유할 수 있습니다.</Sp>
+                <Sp2>매일매일 반려인들이 적은 투병 일지가 업로드 됩니다.</Sp2>
+                <Sp2>이를 통해 반려인들은 서로서로 정보를 공유하고 대화할 수 있습니다.</Sp2>
+            </Sinfo>
+        <SImg3 src={main1} alt='Main' />.
         </Mainbox>
         <SImg4 src={logobig} alt='logo' />
         <Smiddle>
