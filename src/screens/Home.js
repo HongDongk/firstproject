@@ -275,7 +275,7 @@ function Home() {
                 <Sp2>매일매일 반려인들이 적은 투병 일지가 업로드 됩니다.</Sp2>
                 <Sp2>이를 통해 반려인들은 서로서로 정보를 공유하고 대화할 수 있습니다.</Sp2>
             </Sinfo>
-        <SImg3 src={main1} alt='Main' />.
+        <SImg3 src={main1} alt='Main' />
         </Mainbox>
         <SImg4 src={logobig} alt='logo' />
         <Smiddle>
