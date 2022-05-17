@@ -15,8 +15,6 @@ import main1 from '../img/1.png';
 import main2 from '../img/2.png';
 
 
-
-
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -257,7 +255,7 @@ function Home() {
                         }}
                     >
                         <MenuItem onClick={handleClose}><StyledLink2 to={routes.login}>사람들의 이야기</StyledLink2></MenuItem>
-                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.login}>나의 이야기</StyledLink2></MenuItem>
+                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.mystory}>나의 이야기</StyledLink2></MenuItem>
                     </Menu>
             </SMenu>
             <SImg src={logo} alt='Logo' />

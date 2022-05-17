@@ -57,7 +57,6 @@ const Leftsbox = styled.div`
 `;
 const Llink = styled(Link)`
     margin-top:70px;
-    
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -121,6 +120,9 @@ const SImg2 = styled.img`
     width: 36px;
     height: 32.4px;
 `;
+const Rlink = styled(Link)`
+  
+`;
 
 
 function Mypage() {
@@ -147,10 +149,7 @@ function Mypage() {
                 </Leftbox>
 
                 <Rightbox>
-                    <Rtop>
-                        <SImg2 src={book} alt='북' />
-                        <Rp>나의 이야기</Rp>
-                    </Rtop>
+                    <Rlink to={routes.mystorylist}><Rtop><SImg2 src={book} alt='북' /><Rp>나의 이야기</Rp></Rtop></Rlink>
                     <Rbottom>
                         <Rcontent>가지마</Rcontent>
                         <Rcontent/>

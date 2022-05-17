@@ -123,8 +123,7 @@ function Mystorylist() {
 
             </Frontsquare>
 
-        </Container>
-            
+        </Container>           
     
     );
   }
