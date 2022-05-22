@@ -254,8 +254,8 @@ function Home() {
                         'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.login}>사람들의 이야기</StyledLink2></MenuItem>
-                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.mystory}>나의 이야기</StyledLink2></MenuItem>
+                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.peoplestory}>사람들의 이야기</StyledLink2></MenuItem>
+                        <MenuItem onClick={handleClose}><StyledLink2 to={routes.mystorylist}>나의 이야기</StyledLink2></MenuItem>
                     </Menu>
             </SMenu>
             <SImg src={logo} alt='Logo' />

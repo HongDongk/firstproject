@@ -13,6 +13,8 @@ import Mystorylist from "./screens/Mystorylist";
 import Writestory from "./screens/Writestory";
 import Mypage from "./screens/Mypage";
 import routes from "./routes";
+import Peoplestory from "./screens/Peoplestory";
+import Peopledetail from "./screens/Peopledetail";
 
 
 
@@ -56,6 +58,13 @@ function App() {
                 <Route path={routes.mypage}>
                    <Mypage />
                 </Route>
+                <Route path={routes.peoplestory}>
+                   <Peoplestory/>
+                </Route>
+                <Route path={routes.peopledetail}>
+                   <Peopledetail/>
+                </Route>
+
 
 
 

@@ -51,29 +51,57 @@ const Input = styled.input`
 const Bottomsquare = styled.div`
     margin-top:5px;
     display:flex;
-    justify-content: center;
     width:100%;   
     height:59%;
     z-index:3;
 `;
 const Input2 = styled.textarea`
     width:50%;
-    margin-left:15%;
+    border:none;
+    
+`;
+const Lbox = styled.div`  
+    margin-top:50px;
+    margin-left:12%;
+    width: 300px;   
 `;
 const Rbox = styled.div`  
-    margin-left:19px;
-    margin-top:10px;
-    width: 300px;
+    margin-top:50px;
+    margin-left:28px;
+   
+    width: 100px;   
+`;
+const Button = styled.input`
+  margin-top: 28px;
+  width: 70px;
+  height: 35px;
+  background: ${(props) => props.theme.bgColor};
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  border:none;
+`;
+  
+const Writeselector = styled.div`
+    display:flex;
+    flex-direction:column;
+    margin-top:20px;
+    width: 90%;
+    height: 97px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);  
+    padding:12px 22px;
 `;
 const Dateselector = styled.div`
-    width: 220px;
+    width: 90%;
     display:flex;
-    flex-wrap: wrap;
+    flex-direction:column;
     height: 210px;
     background: #FFFFFF;
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);  
     padding:12px 22px;
 `;
+
 const Sp = styled.p`  
     font-weight: 400;
     font-size: 14px;
@@ -81,7 +109,7 @@ const Sp = styled.p`
     color: #000000;
 `;
 const Private = styled(Dateselector)`
-    width:100%;
+    width:90%;
     height: 97px;
     margin-top:20px;
 `;
@@ -124,6 +152,14 @@ function Writestory() {
     setdate(event.target.value);
     };
 
+    const [select, setselect] = React.useState('');
+
+    const handleChange3 = (event) => {
+    setselect(event.target.value);
+    };
+
+
+
     return (
         
         <Container>
@@ -133,8 +169,8 @@ function Writestory() {
                 <Input onChange={onSearch} value={text} placeholder={"제목을 입력하세요"}/>
             </Frontsquare>
             <Bottomsquare>
-                <Input2 onChange={onSearch2} value={text2} placeholder={"내용을 입력하세요"}/>
-                <Rbox>
+                
+                <Lbox>
                     <Dateselector>
                         <Sp>날짜 선택</Sp>
                         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -226,6 +262,26 @@ function Writestory() {
                             </Select>
                         </FormControl>
                     </Dateselector>
+                    <Writeselector>
+                            <Sp>게시판 선택</Sp>
+                            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                                <InputLabel id="demo-select-small">..투병일지</InputLabel>
+                                <Select
+                                    labelId="demo-select-small"
+                                    id="demo-select-small"
+                                    value={select}
+                                    label="select"
+                                    onChange={handleChange3}
+                                >
+                                    <MenuItem value="">
+                                    <em>None</em>
+                                    </MenuItem>
+                                    <MenuItem value={2022}>??투병일지</MenuItem>
+                                    <MenuItem value={2023}>??투병일지</MenuItem>
+                                    <MenuItem value={2024}>??투병일지</MenuItem>
+                                </Select>
+                            </FormControl>
+                    </Writeselector>
                     <Private>
                         <Sp>공개설정</Sp>
                         <Bottom>
@@ -238,7 +294,11 @@ function Writestory() {
                         </Bottom>
                         
                     </Private>
-                </Rbox>          
+                </Lbox>      
+                <Input2 onChange={onSearch2} value={text2} placeholder={"내용을 입력하세요"}/>    
+                <Rbox>
+                    <Button type="submit" value="저장" />
+                </Rbox>
             </Bottomsquare>        
         </Container>
             

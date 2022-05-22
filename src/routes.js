@@ -7,6 +7,8 @@ const routes = {
     find: "/find",
     mystory: "/mystory",
     mystorylist:"/mystorylist",
+    peoplestory:"/peoplestory",
+    peopledetail:"/peopledetail",
     mypage:"/mypage",
     writestory:"/writestory",
 
