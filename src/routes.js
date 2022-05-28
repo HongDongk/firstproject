@@ -12,7 +12,7 @@ const routes = {
     peopledetail:"/peopledetail",
     mypage:"/mypage",
     writestory:"/writestory",
-    heart: "/heart",
+    Heart: "/heart",
 
 
 };

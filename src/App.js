@@ -67,10 +67,10 @@ function App() {
                 <Route path={routes.peopledetail}>
                    <Peopledetail/>
                 </Route>
-                <Route path={routes.petprofile}>
+                <Route path={routes.Petprofile}>
                    <Petprofile/>
                 </Route>
-                <Route path={routes.heart}>
+                <Route path={routes.Heart}>
                    <Heart/>
                 </Route>
 

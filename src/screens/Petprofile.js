@@ -171,7 +171,7 @@ function Petprofile() {
                     <Input2/>
                     <SP>중성화</SP>
                     <Input2/>
-                    <Last><SP2>심박수</SP2><StyledLink2 to={routes.heart}>등록하기</StyledLink2></Last>
+                    <Last><SP2>심박수</SP2><StyledLink2 to={routes.Heart}>등록하기</StyledLink2></Last>
                     <Last><SP2>호흡수</SP2><StyledLink2 to={routes.peoplestory}>등록하기</StyledLink2></Last>
                    
                 </Bottombox>
