@@ -1,7 +1,8 @@
 const routes = {
     home: "/",
     signup: "/sign-up",
-    Petsignup: "/petsign-up",
+    Petsignup: "/petsignup",
+    Petprofile: "/petprofile",
     signupok: "/sign-upok",
     login: "/login",
     find: "/find",
@@ -11,6 +12,7 @@ const routes = {
     peopledetail:"/peopledetail",
     mypage:"/mypage",
     writestory:"/writestory",
+    heart: "/heart",
 
 
 };

@@ -11,9 +11,11 @@ import detail from '../img/detail1.png';
 const Container = styled.div`
     display: flex;
     height: 100vh;
+    width: 100vw;
     align-items: center;
     flex-direction: column;
     z-index: -1;
+    overflow-x: hidden
 `;
 const Frontsquare = styled.div`
     display: flex;
@@ -59,8 +61,7 @@ const Mainbox = styled.div`
     margin-top:50px;
     width:40%;
     display:flex;
-    flex-direction: column;
-    border:1px solid red;
+    flex-direction: column;    
 `;
 const Title = styled.div`
     margin-left:30px;

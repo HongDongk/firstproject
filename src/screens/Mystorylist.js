@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import routes from "../routes";
 import Header from "../components/Header";
 import search from '../img/search.png';
+import storyimg from '../img/storyimg.png';
 
 
 const Container = styled.div`
@@ -16,6 +17,7 @@ const Container = styled.div`
 `;
 const Frontsquare = styled.div`
     display: flex;
+    width:100vw;
     height: 33vh;
     align-items: center;
     flex-direction: column;
@@ -48,15 +50,14 @@ const Topbutton = styled.button`
     height: 33px;   
 `;
 const Mainbox = styled.div`
-    margin-top:80px;
+    margin-top:70px;
     align-items: center;
     display:flex;
     flex-direction: column;
 `;
 const Content = styled.div`
-    margin-top:4px;
-    padding: 38px 55px 29px;
-    display:block;
+    margin-top:20px;
+    padding: 38px;
     width: 824px;
     height: 225px;
     background: #F5F5F5;
@@ -69,8 +70,19 @@ const H1 = styled.h1`
 `;
 const P = styled.p`
     margin-top:20px;
+    width:500px;   
 `;
-
+const SImg = styled.img`
+    width: 15px;
+    height: 15px;   
+`;
+const SImg2 = styled.img`
+    width: 158px;
+    height: 124px;
+    margin-left:550px;
+    position:relative;
+    bottom:90px;
+`;
 const LinkAdd = styled(Link)`
     position:fixed;
     right:150px;
@@ -84,10 +96,7 @@ const LinkAdd = styled(Link)`
     height: 54.81px;
     font-size:50px;      
 `;
-const SImg = styled.img`
-    width: 15px;
-    height: 15px;   
-`;
+
 
 function Mystorylist() {
 
@@ -114,10 +123,12 @@ function Mystorylist() {
                 <Mainbox>
                     <Content>
                         <H1>새로운병원에 다녀오다</H1>
-                        <P>dfasfsdfd</P>
+                        <P>대한 우리 가지에 자신과 힘있다. 길지 노년에게서 있으며, 사랑의 오직 뛰노는 가는 힘차게 아름다우냐? 위하여 이상, 작고 목숨이 있으며, 것이다. 갑 대중을 노래하며 그들의 것이다.대한 우리 가지에 자신과 힘있다. 길지 노년에게서 있으며, 사랑의 오직 뛰노는 가는 힘차게 아름다우냐? 위하여 이상, 작고 목숨이 있으며, 것이다. 갑 대중을 노래하며 그들의 것이다.</P>
+                        <SImg2 src={storyimg} alt='Bell' />
                     </Content>
-                    <Content>가지마</Content>
-                    <Content>가지마</Content>
+                    <Content>내용</Content>
+                    <Content>내용</Content>
+                    <Content>내용</Content>
                 </Mainbox>
                 <LinkAdd to={routes.writestory}>+</LinkAdd>
 

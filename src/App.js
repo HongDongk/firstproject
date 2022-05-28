@@ -15,6 +15,9 @@ import Mypage from "./screens/Mypage";
 import routes from "./routes";
 import Peoplestory from "./screens/Peoplestory";
 import Peopledetail from "./screens/Peopledetail";
+import Petprofile from "./screens/Petprofile";
+import Heart from "./screens/Heart";
+
 
 
 
@@ -64,6 +67,13 @@ function App() {
                 <Route path={routes.peopledetail}>
                    <Peopledetail/>
                 </Route>
+                <Route path={routes.petprofile}>
+                   <Petprofile/>
+                </Route>
+                <Route path={routes.heart}>
+                   <Heart/>
+                </Route>
+
 
 
 

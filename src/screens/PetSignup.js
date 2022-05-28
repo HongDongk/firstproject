@@ -1,7 +1,6 @@
 import PageTitle from "../components/PageTitle";
 import styled from "styled-components";
 import { useForm, Controller } from "react-hook-form";
-import Select from "react-select";
 import { Link } from "react-router-dom";
 import FormError from "../components/auth/FormError";
 import Input from "../components/auth/Input";
@@ -11,6 +10,15 @@ import routes from "../routes";
 import logo from '../img/logobig.png';
 import dog from '../img/dog2.png';
 import {useState} from 'react'
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import * as React from 'react';
+
 
 const Container = styled.div`
     display: flex;
@@ -38,26 +46,32 @@ const Sinfo = styled.div`
 `;
 
 const SInput = styled(Input)`
-    width: 410px;
+    width: 550px;
     height: 40px;  
 `;
-
-const SInput2 = styled.input`
-   
- `;
-
- const Sdiv = styled.div`
+const Gender = styled.div`
     display: flex;
-    flex-direction: row;
     justify-content: center;
     justify-content: space-between; 
-    width:250px;
+    width:300px;
  `;
- 
-
+ const Petavatar = styled.div` 
+    width:50px;
+    height:50px;  
+ `;
+ const Last = styled.div`
+    display: flex;
+    margin-top:30px;  
+    height:100px;
+ `;
+ const File = styled.input`
+    margin-left:150px;
+    margin-top:50px;
+ `;
 const SButton= styled(Button)`
-    width: 410px;
+    width: 550px;
     height: 45px;
+    margin-top:80px;
 `;
 const SImg = styled.img`
     width: 274px;
@@ -71,34 +85,42 @@ const Sdog = styled.img`
     z-index: 1;
     position: relative;
     bottom:130px;
-    left:430px;
-    
+    left:430px;   
 `;
-const Box = styled.div`
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+const Petimg = styled.img`
+    width: 150px;
+    height: 150px;  
+    border-radius:50%;
+    margin-left:10px;
+`;
 
 
-`;
 
 
 
 function PetSignup() {
 
-    const { register, handleSubmit, formState: { errors, isValid }, control} = useForm({mode: "onChange",});
+    const { register, handleSubmit, formState: { errors, isValid }} = useForm({mode: "onChange",});
+
+    const [Kind, setKind] = React.useState('');
+
+    const handleChange = (event) => {
+      setKind(event.target.value);
+    };
     
-    const selectOptions = [
-        { value: "강아지", label: "강아지" },
-        { value: "고양이", label: "고양이" },
-        { value: "햄스터", label: "햄스터" },
-        { value: "토끼", label: "토끼" },
-        { value: "고슴도치", label: "고슴도치" },
-        { value: "거북이", label: "거북이" },
-        { value: "기니피그", label: "기니피그" },
-        { value: "조류", label: "조류" },
-        { value: "패릿", label: "패릿" }  
-      ];
+    const [imageSrc, setImageSrc] = useState('');
+    const encodeFileToBase64 = (fileBlob) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(fileBlob);
+        return new Promise((resolve) => {
+          reader.onload = () => {
+            setImageSrc(reader.result);
+            resolve();
+          };
+        });
+      };
+
+
     
     const onSubmitValid = (data) => {
         
@@ -126,18 +148,29 @@ function PetSignup() {
                     />
                     <FormError message={errors?.petname?.message} />
                     <Sinfo>어떤 동물인가요?</Sinfo>
-                    <Controller
-                        {...register("petkinds", {
-                            required: "반려동물의 종류를입력해주세요",
-                                },
-                        )}
-                        name="petkinds"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                            <Select options={selectOptions} {...field}  label="Text field" />
-                        )}
-                    />
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                            <InputLabel id="Kind"></InputLabel>
+                                <Select
+                                labelId="Kind"
+                                id="Kind"
+                                value={Kind}
+                                label="Kind"
+                                onChange={handleChange}
+                                >
+                                <MenuItem value={'강아지'}>강아지</MenuItem>
+                                <MenuItem value={'고양이'}>고양이</MenuItem>
+                                <MenuItem value={'햄스터'}>햄스터</MenuItem>
+                                <MenuItem value={'토끼'}>토끼</MenuItem>
+                                <MenuItem value={'고슴도치'}>고슴도치</MenuItem>
+                                <MenuItem value={'거북이'}>거북이</MenuItem>
+                                <MenuItem value={'기니피그'}>기니피그</MenuItem>
+                                <MenuItem value={'조류'}>조류</MenuItem>
+                                <MenuItem value={'패릿'}>패릿</MenuItem>
+                                </Select>
+                        </FormControl>
+                    </Box>
+                    
 
            
                     <Sinfo>품종은 무엇인가요?</Sinfo>
@@ -165,15 +198,21 @@ function PetSignup() {
                     <FormError message={errors?.petage?.message} />
                     
                     <Sinfo>성별이 무엇인가요?</Sinfo>
-                    <Sdiv>
-                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="male" />남자</label>
-                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="female" />여자</label>
-                        <label><SInput2 {...register("gender", { required: true })} type="radio" value="none" />모르겠어요</label>    
-                    </Sdiv>
-                            
+                    <Gender>
+                        <FormControlLabel control={<Checkbox/>} label="남자" />
+                        <FormControlLabel control={<Checkbox/>} label="여자" />
+                        <FormControlLabel control={<Checkbox/>} label="모르겠어요" />
+                    </Gender>
+                                       
                     
                     <Sinfo>반려동물의 사진을 입력해주세요(선택)</Sinfo>
-                    <SInput2 name="petimg" type="file"/>
+                    <Last>
+                        <Petavatar>
+                            {imageSrc && <Petimg src={imageSrc} alt="preview-img" />}
+                        </Petavatar>
+                        <File type="file" onChange={(e) => { encodeFileToBase64(e.target.files[0]);}} />
+                        
+                    </Last>                    
                     
                     <SButton type="submit" value="등록하고 완료하기" disabled={!isValid }/> 
                     </form>

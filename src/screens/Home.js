@@ -67,6 +67,8 @@ const Mainbox = styled.div`
     display: flex;
     justify-content: center;  
     align-items: center;
+    overflow:hidden;
+    flex-wrap: no-wrap;
 `;
 const Sleft = styled.div`
     margin-right:78vw;
@@ -191,9 +193,17 @@ const Sp2 = styled.p`
     color: #000000;
 `;
 const SImg3 = styled.img`
+    position:relative;
+    left:330px;
     width: 662.81px;
     height: 367.04px;
-    margin-left:60px;
+    
+`;
+const SmImg2 = styled.img`
+    position:relative;
+    left:550px;
+    width: 651.67px;
+    height: 409.16px;  
 `;
 
 
@@ -201,14 +211,12 @@ const SImg3 = styled.img`
 function Home() {
 
     const [currentButton, setCurrentButton] = useState(0);
-
+    
     const Smbutton0 = styled(RButton)`
         background-color: ${currentButton === 0 ? 'red' : '#A9A9A9'} };
-        SImg src: ${currentButton === 0 ? {main1} : {main1}} };
     `;
     const Smbutton1 = styled(RButton)`
         background-color: ${currentButton === 1 ? 'red' : '#A9A9A9'} };
-        ${currentButton === 0 ? main1 : main2} };
     `;
     const Smbutton2 = styled(RButton)`
         background-color: ${currentButton === 2 ? 'red' : '#A9A9A9'} };
@@ -218,6 +226,7 @@ function Home() {
     `;
 
     const change = (buttonIndex) => { setCurrentButton(buttonIndex);};
+
   
     const goToTop = () => {
             window.scrollTo({
@@ -273,7 +282,9 @@ function Home() {
                 <Sp2>매일매일 반려인들이 적은 투병 일지가 업로드 됩니다.</Sp2>
                 <Sp2>이를 통해 반려인들은 서로서로 정보를 공유하고 대화할 수 있습니다.</Sp2>
             </Sinfo>
-        <SImg3 src={main1} alt='Main' />
+            <SImg3 src={main1} alt='Main' />
+            <SmImg2 src={main2} alt='Main' />
+                        
         </Mainbox>
         <SImg4 src={logobig} alt='logo' />
         <Smiddle>

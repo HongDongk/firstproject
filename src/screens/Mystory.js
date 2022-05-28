@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 import routes from "../routes";
 import Header from "../components/Header";
 import search from '../img/search.png';
-import p1 from '../img/게시판1.png';
-import p2 from '../img/게시판2.png';
-
 
 
 const Container = styled.div`
@@ -113,9 +110,7 @@ function Mystory() {
                 </Searchbox>
             </Frontsquare>
             <Plus>
-                <SImg2 src={p1} alt='게시판' />
-                <SImg2 src={p2} alt='게시판2' />
-                <Smallplus><LinkAdd to={routes.writestory}>+</LinkAdd></Smallplus>
+               
             </Plus>
         </Container>
             

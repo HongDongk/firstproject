@@ -96,7 +96,7 @@ const Mainbox = styled.div`
     display:flex;
     flex-direction: column;
 `;
-const Content = styled.div`
+const Content = styled(Link)`
     margin-top:20px;
     padding: 38px;
     width: 824px;
@@ -111,22 +111,7 @@ const H1 = styled.h1`
 `;
 const P = styled.p`
     margin-top:20px;
-    width:500px;
-    
-`;
-
-const LinkAdd = styled(Link)`
-    position:fixed;
-    right:150px;
-    top:90vh;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    background: #EF5252;
-    text-align: center;
-    width: 54.81px;
-    height: 54.81px;
-    font-size:50px;      
+    width:500px;   
 `;
 const SImg = styled.img`
     width: 15px;
@@ -169,18 +154,16 @@ function Peoplestory() {
                   <Input onChange={onSearch} value={text}/>
                 </Searchbox>
                 <Mainbox>
-                    <Content>
+                    <Content to={routes.peopledetail}>
                         <H1>새로운병원에 다녀오다</H1>
                         <P>대한 우리 가지에 자신과 힘있다. 길지 노년에게서 있으며, 사랑의 오직 뛰노는 가는 힘차게 아름다우냐? 위하여 이상, 작고 목숨이 있으며, 것이다. 갑 대중을 노래하며 그들의 것이다.대한 우리 가지에 자신과 힘있다. 길지 노년에게서 있으며, 사랑의 오직 뛰노는 가는 힘차게 아름다우냐? 위하여 이상, 작고 목숨이 있으며, 것이다. 갑 대중을 노래하며 그들의 것이다.</P>
                         <SImg2 src={storyimg} alt='Bell' />
                     </Content>
-                    <Content>
-                    </Content>
-                    <Content>가지마</Content>
-                    <Content>가지마</Content>
-                    <Content>가지마</Content>
+                    <Content>내용</Content>
+                    <Content>내용</Content>
+                    <Content>내용</Content>
                 </Mainbox>
-                <LinkAdd to={routes.writestory}>+</LinkAdd>
+
 
             </Frontsquare>
 

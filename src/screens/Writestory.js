@@ -12,6 +12,10 @@ import Select from '@mui/material/Select';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import template from '../img/템플릿.png';
+import Menu from '@mui/material/Menu';
+
+
 
 
 
@@ -117,7 +121,11 @@ const Bottom = styled.div`
     display:flex;
     width:300px;   
 `;
+const SImg = styled.img`
+    width: 64px;
+    height: 20px;
 
+`;
 
 
 
@@ -297,6 +305,7 @@ function Writestory() {
                 </Lbox>      
                 <Input2 onChange={onSearch2} value={text2} placeholder={"내용을 입력하세요"}/>    
                 <Rbox>
+                    <SImg src={template} alt='congrat' />
                     <Button type="submit" value="저장" />
                 </Rbox>
             </Bottomsquare>        

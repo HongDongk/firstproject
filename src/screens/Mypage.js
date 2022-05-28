@@ -70,7 +70,7 @@ const Llink = styled(Link)`
     text-align: center;
     color: #FFFFFF;
 `;
-const Lbottombox = styled.div`
+const Lbottombox = styled(Link)`
     width: 473px;
     margin-top:33px;
     height: 184px;
@@ -98,18 +98,27 @@ const Rp = styled.p`
 `;
 const Rbottom = styled.div`
     display: flex;
+    flex-wrap: wrap;
     width: 473px;
     height: 290px;
     background: #EDEDED;
     border-radius: 10px;  
-    padding: 13px 20px 14px;
+    padding: 27px 20px 14px;
 `;
 const Rcontent = styled.div`
     width: 400px;
     height: 52px;
     background: #F5F5F5;
     border-radius: 3px;
-    padding: 13px 20px 14px;
+    padding: 15px 20px 14px;
+`;
+const Lcontent = styled.div`
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    margin-left:50px;
+    margin-top:50px;
 `;
 
 const SImg = styled.img`
@@ -127,7 +136,10 @@ const Rlink = styled(Link)`
 
 function Mypage() {
     
+    
+    
     return (
+
         
         <Container>
             <PageTitle title1="Mypage"/>
@@ -143,17 +155,20 @@ function Mypage() {
                         </Lpbox>                      
                     </Leftsbox>
                     <Llink>나의 댓글</Llink>
-                    <Lbottombox>
-                        안녕
+                    <Lbottombox to={routes.Petprofile}>
+                        <Lcontent></Lcontent>
+
+                    
                     </Lbottombox>
                 </Leftbox>
 
                 <Rightbox>
                     <Rlink to={routes.mystorylist}><Rtop><SImg2 src={book} alt='북' /><Rp>나의 이야기</Rp></Rtop></Rlink>
                     <Rbottom>
-                        <Rcontent>가지마</Rcontent>
-                        <Rcontent/>
-                        <Rcontent/>
+                        <Rcontent>내용</Rcontent>
+                        <Rcontent>내용</Rcontent>
+                        <Rcontent>내용</Rcontent>
+                        <Rcontent>내용</Rcontent>
 
                     </Rbottom>
                 </Rightbox>

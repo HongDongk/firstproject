@@ -77,7 +77,7 @@ function Signupok() {
             <Square>
                 <SImg3 src={group} alt='congrat' />
                 <Sdiv>회원가입이 완료되었습니다!</Sdiv>
-                <StyledLink2 to={routes.login}>반려동물 건강정보 입력하러갈래요!</StyledLink2>
+                <StyledLink2 to={routes.Petprofile}>반려동물 건강정보 입력하러갈래요!</StyledLink2>
                 <StyledLink3 to={routes.home}>홈으로 돌아갈래요!</StyledLink3>
                
             </Square>
